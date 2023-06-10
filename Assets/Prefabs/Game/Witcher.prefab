@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 8176478620096004602}
   - component: {fileID: 179196252080299012}
   - component: {fileID: 1092387407709437303}
+  - component: {fileID: 1956299755242763588}
+  - component: {fileID: 3566465144595668548}
   m_Layer: 0
   m_Name: Witcher
   m_TagString: Untagged
@@ -83,3 +85,38 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1956299755242763588
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9034272240635768606}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.1590846, y: 4.2079535, z: 3.163083}
+  m_Center: {x: -0.000007927417, y: 0.8624282, z: -0.1266843}
+--- !u!195 &3566465144595668548
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9034272240635768606}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 1.5795344
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 5.93281
+  m_BaseOffset: 2.966405
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
