@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyController : MonoBehaviour
+namespace ZAGSTUDIO.GAME.ENEMY
 {
-    public Transform Player;
-    NavMeshAgent agent;
-    private void Start()
+    public class EnemyController : MonoBehaviour
     {
-        agent = GetComponent<NavMeshAgent>();
-        agent.SetDestination(Player.position);
+        public Transform Player;
+        NavMeshAgent agent;
+        private void Start()
+        {
+            agent = GetComponent<NavMeshAgent>();
+            agent.SetDestination(Player.position);
+        }
     }
 }
