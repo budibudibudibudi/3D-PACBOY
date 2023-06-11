@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,7 +18,49 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
-    private void Start()
+    [SerializeField] private STATE currentState;
+    [SerializeField] private int Coin;
+
+    private void OnEnable()
     {
+        Actions.OnStateChange += OnStateChange;
+        Actions.OnGetCoin += OnGetCoin;
+    }
+
+
+    private void OnDisable()
+    {
+        Actions.OnStateChange -= OnStateChange;
+        Actions.OnGetCoin -= OnGetCoin;
+    }
+    private void OnGetCoin(int obj)
+    {
+        Coin += obj;
+        Actions.TotalCoin.Invoke(Coin);
+    }
+
+    private void OnStateChange(STATE obj)
+    {
+        currentState = obj;
+        switch (currentState)
+        {
+            case STATE.PLAY:
+                Time.timeScale = 1;
+                break;
+            case STATE.RESUME:
+                Time.timeScale = 1;
+                break;
+            case STATE.PAUSE:
+                Time.timeScale = 0;
+                break;
+            case STATE.GAMEOVER:
+                Time.timeScale = 0;
+                break;
+            case STATE.WIN:
+                Time.timeScale = 0;
+                break;
+            default:
+                break;
+        }
     }
 }

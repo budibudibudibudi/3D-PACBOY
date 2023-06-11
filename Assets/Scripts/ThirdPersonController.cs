@@ -102,7 +102,7 @@ namespace StarterAssets
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
         private PlayerInput _playerInput;
 #endif
-        private Animator _animator;
+        [SerializeField] private Animator _animator;
         private CharacterController _controller;
         private StarterAssetsInputs _input;
         private GameObject _mainCamera;
@@ -132,12 +132,37 @@ namespace StarterAssets
                 _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
             }
         }
+        private void OnEnable()
+        {
+            Actions.OnPlayerStateChange += OnPlayerStateChange;   
+        }
+
+        private void OnDisable()
+        {
+            Actions.OnPlayerStateChange -= OnPlayerStateChange;
+        }
+        private void OnPlayerStateChange(PLAYERSTATE arg1, int arg2)
+        {
+            switch (arg1)
+            {
+                case PLAYERSTATE.NORMAL:
+                    SprintSpeed = 5;
+                    break;
+                case PLAYERSTATE.IMMUNE:
+                    break;
+                case PLAYERSTATE.BUFFED:
+                    SprintSpeed = 7;
+                    break;
+                default:
+                    break;
+            }
+        }
 
         private void Start()
         {
             _cinemachineTargetYaw = CinemachineCameraTarget.transform.rotation.eulerAngles.y;
             
-            _hasAnimator = TryGetComponent(out _animator);
+            //_hasAnimator = TryGetComponent(out _animator);
             _controller = GetComponent<CharacterController>();
             _input = GetComponent<StarterAssetsInputs>();
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
@@ -155,7 +180,7 @@ namespace StarterAssets
 
         private void Update()
         {
-            _hasAnimator = TryGetComponent(out _animator);
+            //_hasAnimator = TryGetComponent(out _animator);
 
             //JumpAndGravity();
             GroundedCheck();

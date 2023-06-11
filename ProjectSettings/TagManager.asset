@@ -6,6 +6,8 @@ TagManager:
   tags:
   - CinemachineTarget
   - Coin
+  - Enemy
+  - Buah
   layers:
   - Default
   - TransparentFX
